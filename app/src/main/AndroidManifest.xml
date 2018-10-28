@@ -16,7 +16,7 @@
             android:name="com.google.android.gms.ads.AD_MANAGER_APP"
             android:value="true" />
 
-        <activity android:name=".AdvertsContainerActivity" />
+        <activity android:name=".adverts.AdvertsContainerActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

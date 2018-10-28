@@ -1,9 +1,10 @@
-package com.trinitymirror.reuseadvertssample
+package com.trinitymirror.reuseadvertssample.adverts
 
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
+import com.trinitymirror.reuseadvertssample.R
 import kotlinx.android.synthetic.main.activity_adverts.*
 
 class AdvertsContainerActivity : AppCompatActivity() {

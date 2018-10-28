@@ -1,4 +1,4 @@
-package com.trinitymirror.reuseadvertssample
+package com.trinitymirror.reuseadvertssample.util
 
 import android.content.Context
 import android.support.annotation.LayoutRes
@@ -9,15 +9,22 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import com.google.android.gms.ads.formats.UnifiedNativeAdView
+import com.trinitymirror.reuseadvertssample.R
 
 object DfpViewFactory {
 
     fun createNativeContentAdvert(parent: ViewGroup): View {
-        return createNativeAdView(parent, R.layout.dfp_native_content_ad)
+        return createNativeAdView(
+            parent,
+            R.layout.dfp_native_content_ad
+        )
     }
 
     fun createNativeAppInstallAdvert(parent: ViewGroup): View {
-        return createNativeAdView(parent, R.layout.dfp_native_app_install_ad)
+        return createNativeAdView(
+            parent,
+            R.layout.dfp_native_app_install_ad
+        )
     }
 
     private fun createNativeAdView(parent: ViewGroup, @LayoutRes layoutResId: Int): View {

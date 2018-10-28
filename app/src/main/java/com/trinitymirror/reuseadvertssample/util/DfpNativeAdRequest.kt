@@ -1,4 +1,4 @@
-package com.trinitymirror.reuseadvertssample
+package com.trinitymirror.reuseadvertssample.util
 
 import android.content.Context
 import com.google.android.gms.ads.AdListener

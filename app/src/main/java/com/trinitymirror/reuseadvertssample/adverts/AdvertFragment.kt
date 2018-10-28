@@ -1,4 +1,4 @@
-package com.trinitymirror.reuseadvertssample
+package com.trinitymirror.reuseadvertssample.adverts
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -6,14 +6,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import com.google.android.gms.ads.AdListener
-import com.google.android.gms.ads.AdLoader
 import com.google.android.gms.ads.doubleclick.PublisherAdRequest
-import com.google.android.gms.ads.formats.NativeAdOptions
 import com.google.android.gms.ads.formats.UnifiedNativeAd
 import com.google.android.gms.ads.formats.UnifiedNativeAdView
 import com.mirror.news.ui.adapter.teaser_list.holder.TeaserAppInstallAdViewHolder
 import com.mirror.news.ui.adapter.teaser_list.holder.TeaserContentAdViewHolder
+import com.trinitymirror.reuseadvertssample.MyApplication
+import com.trinitymirror.reuseadvertssample.R
+import com.trinitymirror.reuseadvertssample.util.DfpNativeAdRequest
+import com.trinitymirror.reuseadvertssample.util.DfpViewFactory
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
@@ -63,7 +64,11 @@ class AdvertFragment : Fragment() {
 
     private fun loadAdvert() {
 
-        disposable = DfpNativeAdRequest(context!!, getAdUnitId(), buildAdRequest())
+        disposable = DfpNativeAdRequest(
+            context!!,
+            getAdUnitId(),
+            buildAdRequest()
+        )
             .loadAdvert()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -78,12 +83,14 @@ class AdvertFragment : Fragment() {
 
         if (advert.isAppInstallAdvert()) {
             Timber.d("[$title]: Displayed app install advert")
-            TeaserAppInstallAdViewHolder(DfpViewFactory.createNativeAppInstallAdvert(advertContainer)
+            TeaserAppInstallAdViewHolder(
+                DfpViewFactory.createNativeAppInstallAdvert(advertContainer)
                 .apply { advertContainer.addView(this) })
                 .bind(advert)
         } else {
             Timber.d("[$title]: Displayed content advert")
-            TeaserContentAdViewHolder(DfpViewFactory.createNativeContentAdvert(advertContainer)
+            TeaserContentAdViewHolder(
+                DfpViewFactory.createNativeContentAdvert(advertContainer)
                 .apply { advertContainer.addView(this) })
                 .bind(advert)
         }
