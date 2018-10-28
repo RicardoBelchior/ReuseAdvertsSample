@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">ReuseAdvertsSample</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_cake">Cake</string>
+
+    <string name="advertisement">Advertisement</string>
+    <string name="ad_unit_title">Ad Unit Id</string>
+</resources>

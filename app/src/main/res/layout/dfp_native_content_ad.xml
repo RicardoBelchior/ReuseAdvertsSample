@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.gms.ads.formats.MediaView
+        android:id="@+id/dfp_content_main_image"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/teaser_list_dfp_native_image_height"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@color/placeholder_color" />
+
+    <TextView
+        android:id="@+id/dfp_content_ad_attribution"
+        style="@style/DfpNativeAdAttribution"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/trinity_mirror_gap_small"
+        android:layout_marginStart="@dimen/trinity_mirror_gap_small"
+        android:layout_marginTop="@dimen/trinity_mirror_gap_normal"
+        android:text="@string/advertisement"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dfp_content_main_image" />
+
+    <TextView
+        android:id="@+id/dfp_content_title"
+        style="@style/DfpNativeTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/trinity_mirror_gap_small"
+        android:layout_marginStart="@dimen/trinity_mirror_gap_small"
+        android:layout_marginTop="@dimen/trinity_mirror_gap_small"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dfp_content_ad_attribution"
+        tools:text="Duck Adventure Land" />
+
+    <TextView
+        android:id="@+id/dfp_content_body"
+        style="@style/DfpNativeBody"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/trinity_mirror_gap_small"
+        android:layout_marginStart="@dimen/trinity_mirror_gap_small"
+        android:layout_marginTop="@dimen/trinity_mirror_gap_small"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dfp_content_title"
+        tools:text="The most comfortable way to enjoy the ducks" />
+
+    <TextView
+        android:id="@+id/dfp_content_advertiser_name"
+        style="@style/DfpNativeAdvertiserName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/trinity_mirror_gap_small"
+        android:layout_marginStart="@dimen/trinity_mirror_gap_small"
+        android:layout_marginTop="@dimen/trinity_mirror_gap_small"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dfp_content_body"
+        tools:text="www.duckadventureland.com" />
+
+    <Button
+        android:id="@+id/dfp_content_call_to_action"
+        style="@style/DfpNativeButton"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/teaser_list_dfp_call_to_action_button_height"
+        android:layout_marginBottom="@dimen/trinity_mirror_gap_small"
+        android:layout_marginEnd="@dimen/trinity_mirror_gap_small"
+        android:layout_marginStart="@dimen/trinity_mirror_gap_small"
+        android:layout_marginTop="@dimen/trinity_mirror_gap_normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dfp_content_advertiser_name"
+        tools:text="VISIT SITE" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/trinity_mirror_gap_normal"
+        app:layout_constraintTop_toBottomOf="@+id/dfp_content_call_to_action" />
+
+</android.support.constraint.ConstraintLayout>
