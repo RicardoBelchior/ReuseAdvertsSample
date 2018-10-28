@@ -64,11 +64,7 @@ class AdvertFragment : Fragment() {
 
     private fun loadAdvert() {
 
-        disposable = DfpNativeAdRequest(
-            context!!,
-            getAdUnitId(),
-            buildAdRequest()
-        )
+        disposable = DfpNativeAdRequest(context!!, getAdUnitId(), buildAdRequest())
             .loadAdvert()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -81,19 +77,29 @@ class AdvertFragment : Fragment() {
     private fun displayAdvert(advert: UnifiedNativeAd) {
         localAdvert = advert
 
+        // Using the unified API this is redundant. It's legacy code, where we used 2 different
+        // layouts and view holders to display each type of advert.
         if (advert.isAppInstallAdvert()) {
-            Timber.d("[$title]: Displayed app install advert")
-            TeaserAppInstallAdViewHolder(
-                DfpViewFactory.createNativeAppInstallAdvert(advertContainer)
-                .apply { advertContainer.addView(this) })
-                .bind(advert)
+            displayAppInstallAd(advert)
         } else {
-            Timber.d("[$title]: Displayed content advert")
-            TeaserContentAdViewHolder(
-                DfpViewFactory.createNativeContentAdvert(advertContainer)
-                .apply { advertContainer.addView(this) })
-                .bind(advert)
+            displayContentAd(advert)
         }
+    }
+
+    private fun displayContentAd(advert: UnifiedNativeAd) {
+        Timber.d("[$title]: Displayed content advert")
+        TeaserContentAdViewHolder(
+            DfpViewFactory.createNativeContentAdvert(advertContainer)
+                .apply { advertContainer.addView(this) })
+            .bind(advert)
+    }
+
+    private fun displayAppInstallAd(advert: UnifiedNativeAd) {
+        Timber.d("[$title]: Displayed app install advert")
+        TeaserAppInstallAdViewHolder(
+            DfpViewFactory.createNativeAppInstallAdvert(advertContainer)
+                .apply { advertContainer.addView(this) })
+            .bind(advert)
     }
 
     private fun displayError(throwable: Throwable) {
