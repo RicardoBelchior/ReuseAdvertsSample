@@ -108,7 +108,7 @@ class AdvertFragment : Fragment() {
     }
 
     private fun UnifiedNativeAd.isAppInstallAdvert(): Boolean {
-        return this.price != null || this.store != null || this.starRating != null
+        return !price.isNullOrEmpty() || !store.isNullOrEmpty() || starRating != null
     }
 
     private fun getAdUnitId() = MyApplication.adUnitId
