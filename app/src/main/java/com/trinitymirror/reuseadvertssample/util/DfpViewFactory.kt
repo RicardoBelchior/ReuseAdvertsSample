@@ -1,9 +1,9 @@
 package com.trinitymirror.reuseadvertssample.util
 
 import android.content.Context
-import android.support.annotation.LayoutRes
-import android.support.constraint.ConstraintLayout
-import android.support.v7.widget.CardView
+import androidx.annotation.LayoutRes
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.cardview.widget.CardView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup

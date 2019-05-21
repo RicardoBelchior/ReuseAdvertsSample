@@ -1,6 +1,6 @@
-package com.mirror.news.ui.adapter.teaser_list.holder
+package com.trinitymirror.reuseadvertssample.adverts.holder
 
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
