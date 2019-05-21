@@ -6,18 +6,22 @@ import androidx.fragment.app.Fragment
 import androidx.appcompat.app.AppCompatActivity
 import com.trinitymirror.reuseadvertssample.R
 import kotlinx.android.synthetic.main.activity_adverts.*
+import timber.log.Timber
 
 class AdvertsContainerActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_adverts)
+        Timber.d("#onCreate")
 
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
         navigation.selectedItemId = R.id.navigation_home
     }
 
     override fun onDestroy() {
+        Timber.d("#onDestroy")
+        navigation.setOnNavigationItemSelectedListener(null)
         super.onDestroy()
     }
 

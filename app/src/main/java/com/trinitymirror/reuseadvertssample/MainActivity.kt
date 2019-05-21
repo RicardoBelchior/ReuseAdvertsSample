@@ -7,12 +7,14 @@ import android.text.Editable
 import android.text.TextWatcher
 import com.trinitymirror.reuseadvertssample.adverts.AdvertsContainerActivity
 import kotlinx.android.synthetic.main.activity_main.*
+import timber.log.Timber
 
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        Timber.d("#onCreate")
 
         button.setOnClickListener { startActivity(Intent(this, AdvertsContainerActivity::class.java)) }
         adUnitTextView.setText(MyApplication.adUnitId)
@@ -28,5 +30,10 @@ class MainActivity : AppCompatActivity() {
             }
 
         })
+    }
+
+    override fun onDestroy() {
+        Timber.d("#onDestroy")
+        super.onDestroy()
     }
 }

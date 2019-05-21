@@ -64,7 +64,7 @@ class AdvertFragment : Fragment() {
 
     private fun loadAdvert() {
 
-        disposable = DfpNativeAdRequest(context!!, getAdUnitId(), buildAdRequest())
+        disposable = DfpNativeAdRequest(context!!.applicationContext, getAdUnitId(), buildAdRequest())
             .loadAdvert()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
