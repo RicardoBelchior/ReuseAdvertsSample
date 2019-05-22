@@ -19,10 +19,12 @@ class DfpNativeAdRequest(
 
         return Single.create<UnifiedNativeAd> { emitter ->
             Timber.d("Loading advert...")
+            val ts = System.currentTimeMillis()
+
             buildAdLoader(
                 context, adUnitId,
                 UnifiedNativeAd.OnUnifiedNativeAdLoadedListener { nativeAd ->
-                    Timber.d("Loaded native ad: $nativeAd")
+                    Timber.d("Loaded native ad: $nativeAd (took ${System.currentTimeMillis() - ts}ms)")
                     if (!emitter.isDisposed) {
                         emitter.onSuccess(nativeAd)
                     }
@@ -30,7 +32,7 @@ class DfpNativeAdRequest(
                 object : AdListener() {
                     override fun onAdFailedToLoad(errorCode: Int) {
                         if (!emitter.isDisposed) {
-                            emitter.onError(Exception("Ad failed to load with error: $errorCode"))
+                            emitter.onError(Exception("Ad failed to load with error: $errorCode (took ${System.currentTimeMillis() - ts}ms)"))
                         }
                     }
                 })
