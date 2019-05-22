@@ -38,7 +38,7 @@ class AdvertFragment : Fragment() {
     private val title by lazy { arguments?.getString(KEY_TITLE)!! }
     private val adView by lazy { view?.findViewById(R.id.teaser_list_dfp_native_ad) as UnifiedNativeAdView? }
 
-    private var localAdvert: UnifiedNativeAd? = null
+//    private var localAdvert: UnifiedNativeAd? = null
     private var disposable: Disposable? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -53,19 +53,25 @@ class AdvertFragment : Fragment() {
     }
 
     override fun onDestroyView() {
-        Timber.d("[$title]: Cleared advert")
+        Timber.d("[$title]: onDestroyView")
         disposable?.dispose()
         adView?.destroy()
-        localAdvert?.destroy()
-        localAdvert = null
+//        localAdvert?.destroy()
+//        localAdvert = null
 
         super.onDestroyView()
     }
 
     private fun loadAdvert() {
 
+        if (MyApplication.cachedAdverts.containsKey(title)) {
+            displayAdvert(MyApplication.cachedAdverts[title]!!)
+            return
+        }
+
         disposable = DfpNativeAdRequest(context!!.applicationContext, getAdUnitId(), buildAdRequest())
             .loadAdvert()
+            .doOnSuccess { MyApplication.cachedAdverts[title] = it }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
@@ -75,7 +81,7 @@ class AdvertFragment : Fragment() {
     }
 
     private fun displayAdvert(advert: UnifiedNativeAd) {
-        localAdvert = advert
+//        localAdvert = advert
 
         // Using the unified API this is redundant. It's legacy code, where we used 2 different
         // layouts and view holders to display each type of advert.
