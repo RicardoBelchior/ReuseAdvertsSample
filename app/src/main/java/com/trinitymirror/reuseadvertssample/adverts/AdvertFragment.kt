@@ -36,7 +36,7 @@ class AdvertFragment : Fragment() {
     }
 
     private val title by lazy { arguments?.getString(KEY_TITLE)!! }
-    private val adView by lazy { view?.findViewById(R.id.teaser_list_dfp_native_ad) as UnifiedNativeAdView? }
+    //private val adView by lazy { view?.findViewById(R.id.teaser_list_dfp_native_ad) as UnifiedNativeAdView? }
 
     private var localAdvert: UnifiedNativeAd? = null
     private var disposable: Disposable? = null
@@ -58,8 +58,8 @@ class AdvertFragment : Fragment() {
         disposable?.dispose()
 
         advertContainer.removeAllViews()
-        adView?.removeAllViews()
-        adView?.destroy()
+//        adView?.removeAllViews()
+//        adView?.destroy()
 
 //        localAdvert?.destroy()
 //        localAdvert = null
