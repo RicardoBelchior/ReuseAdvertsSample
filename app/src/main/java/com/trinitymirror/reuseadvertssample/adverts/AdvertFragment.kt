@@ -54,10 +54,15 @@ class AdvertFragment : Fragment() {
 
     override fun onDestroyView() {
         Timber.d("[$title]: Cleared advert")
+
         disposable?.dispose()
+
+        advertContainer.removeAllViews()
+        adView?.removeAllViews()
         adView?.destroy()
-        localAdvert?.destroy()
-        localAdvert = null
+
+//        localAdvert?.destroy()
+//        localAdvert = null
 
         super.onDestroyView()
     }
@@ -66,7 +71,7 @@ class AdvertFragment : Fragment() {
         val ts = System.currentTimeMillis()
 
         disposable = DfpNativeAdRequest(context!!.applicationContext, getAdUnitId(), buildAdRequest())
-            .loadAdvert()
+            .loadAdvert(title)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
