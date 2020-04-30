@@ -63,6 +63,7 @@ class AdvertFragment : Fragment() {
     }
 
     private fun loadAdvert() {
+        val ts = System.currentTimeMillis()
 
         disposable = DfpNativeAdRequest(context!!.applicationContext, getAdUnitId(), buildAdRequest())
             .loadAdvert()
@@ -72,6 +73,8 @@ class AdvertFragment : Fragment() {
                 { displayAdvert(it) },
                 { displayError(it) }
             )
+
+        Timber.d("Requesting ad: ${System.currentTimeMillis() - ts}ms")
     }
 
     private fun displayAdvert(advert: UnifiedNativeAd) {
